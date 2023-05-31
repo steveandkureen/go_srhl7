@@ -1,0 +1,15 @@
+﻿{
+  "SegmentType": "MFE",
+  "SegmentLabels": {
+    "1": "Record-Level Event",
+    "2": "MFN Control ID",
+    "3": "Effective Date/Time",
+    "4": "Primary Key Value",
+    "4.1": "Identifier",
+    "4.2": "Text",
+    "4.3": "Name of Coding System",
+    "4.4": "Alternate Identifier",
+    "4.5": "Alternate Text",
+    "4.6": "Name of Alternate Coding System"
+  }
+}

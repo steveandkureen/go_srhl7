@@ -1,0 +1,25 @@
+<mat-accordion multi>
+   <mat-expansion-panel>
+      <mat-expansion-panel-header>
+         <mat-panel-title> Send </mat-panel-title>
+         <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-send-view-header
+         [client-data]="clientData | async"
+         [messages]="sendMessages"
+      ></app-send-view-header>
+      <app-send-view [client-data]="clientData | async" [messages]="sendMessages"></app-send-view>
+   </mat-expansion-panel>
+   <mat-expansion-panel>
+      <mat-expansion-panel-header>
+         <mat-panel-title> Receive </mat-panel-title>
+         <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+      <app-receive-view-header
+         [client-data]="clientData | async"
+         [messages]="receiveMessages"
+      ></app-receive-view-header>
+      <app-receive-view [messages]="receiveMessages"></app-receive-view>
+   </mat-expansion-panel>
+</mat-accordion>
+<div class="master-control"></div>

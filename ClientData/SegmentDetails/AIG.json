@@ -1,0 +1,20 @@
+﻿{
+  "SegmentType": "AIG",
+  "SegmentLabels": {
+    "1":"Set ID – AIG",
+    "2":"Segment Action Code",
+    "3":"Resource ID",
+    "4":"Resource Type",
+    "5":"Resource Group",
+    "6":"Resource Quantity",
+    "7":"Resource Quantity Units",
+    "8":"Start Date/Time",
+    "9":"Start Date/Time Offset",
+    "10":"Start Date/Time Offset Units",
+    "11":"Duration",
+    "12":"Duration Units",
+    "13":"Allow Substitution Code",
+    "14":"Filler Status Code"
+
+  }
+}

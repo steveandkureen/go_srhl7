@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Add Message</h1>
+<mat-dialog-content class="add-message-dialog">
+    <textarea name="message" matInput [(ngModel)]="message" ></textarea>
+</mat-dialog-content>
+<div mat-dialog-actions class="dialog-button-panel">
+  <button mat-stroked-button color="primary" mat-dialog-close >Cancel</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="message" >Ok</button>
+</div>

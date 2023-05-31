@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Templates</h1>
+<mat-dialog-content class="add-message-dialog">
+  <div class="template-frame">
+    <mat-selection-list [multiple]="false" #selectedTemplates>
+      <mat-list-option *ngFor="let item of templates" [value]="item">
+        <span class="template-name">{{ item.name }}</span>
+        <span class="template-description">{{ item.description }}</span>
+
+        <span class="template-button delete-button">
+          <button mat-mini-fab color="primary" aria-label="Delete Template">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+        <span class="template-button edit-button">
+          <button
+            mat-mini-fab
+            color="primary"
+            (click)="editTemplate(item)"
+            aria-label="Edit Template"
+          >
+            <mat-icon>edit_square</mat-icon>
+          </button>
+        </span>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</mat-dialog-content>
+<div class="dialog-options-panel">
+  <mat-form-field class="tempate-count">
+    <mat-label>Count</mat-label>
+    <input matInput placeholder="Count" [(ngModel)]="count" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-button-panel">
+  <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  <button
+    mat-stroked-button
+    color="primary"
+    [mat-dialog-close]="{
+      template: selectedTemplates.selectedOptions.selected[0]?.value,
+      count: count
+    }"
+  >
+    Ok
+  </button>
+</div>

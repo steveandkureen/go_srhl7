@@ -1,0 +1,21 @@
+
+<ng-template ngFor let-item [ngForOf]="clients">
+  <mat-card class="client-card" >
+    <mat-card-header>
+      <mat-card-title>{{item.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>Listen: {{item.listeningPort}}</div>
+      <div>Send: {{item.sendingPort}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="editClient(item)">Edit</button>
+      <button mat-button (click)="openClient(item)">Open</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
+<div class="button-panel">
+  <button mat-fab color="primary" (click)="addClient()">
+    <mat-icon aria-hidden="false" aria-label="Add Message" fontIcon="add"></mat-icon>
+  </button>
+</div>

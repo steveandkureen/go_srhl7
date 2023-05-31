@@ -1,0 +1,85 @@
+<mat-form-field appearance="fill">
+  <mat-label>Ip Address</mat-label>
+  <input
+    type="text"
+    placeholder="Pick One"
+    aria-label="Ip Address"
+    matInput
+    [formControl]="ipAddress"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let ip of filteredOptions | async" [value]="ip">
+      {{ ip }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Sending Port</mat-label>
+  <input
+    matInput
+    placeholder=""
+    type="number"
+    value="{{ clientData?.sendingPort }}"
+  />
+</mat-form-field>
+<mat-slide-toggle
+  class="slide-control"
+  [checked]="connected"
+  (change)="connectButtonChagned($event)"
+  >Connect</mat-slide-toggle
+>
+<span class="add-button">
+  <button
+    class="send-button"
+    mat-raised-button
+    color="primary"
+    (click)="sendMessages()"
+    [disabled]="canSend()"
+  >
+    Send
+  </button>
+</span>
+<span class="add-button">
+  <button mat-fab color="primary" [matMenuTriggerFor]="menu">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Add Message"
+      fontIcon="add"
+    ></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openNewMessageDialog()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Open File"
+        fontIcon="add_box"
+      ></mat-icon>
+      <span>Add Message</span>
+    </button>
+    <button mat-menu-item (click)="openAddFileDialog()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Open File"
+        fontIcon="library_add"
+      ></mat-icon>
+      <span>Open File</span>
+    </button>
+    <button mat-menu-item (click)="openTemplateDialog()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Open Templates"
+        fontIcon="bookmarks"
+      ></mat-icon>
+      <span>Open Templates</span>
+    </button>
+    <button mat-menu-item (click)="addTemplateDialog()">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Add Template"
+        fontIcon="bookmark_add"
+      ></mat-icon>
+      <span>Add Template</span>
+    </button>
+  </mat-menu>
+</span>

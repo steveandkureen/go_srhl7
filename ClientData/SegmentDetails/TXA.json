@@ -1,0 +1,35 @@
+﻿{
+  "SegmentType": "TXA",
+  "SegmentLabels": {
+    "1":"Set ID – TXA",
+    "2":"Document Type",
+    "3":"Document   Content Presentation",
+    "4":"Activity Date Time",
+    "5":"Primary Activity Provider Code Name",
+    "6":"Origination Date Time",
+    "7":"Transcription Date Time",
+    "8":"Edit Date Time",
+    "9":"Originator Code Name",
+    "10":"Assigned Document Authenticator",
+    "11":"Transcriptionist Code Name",
+    "12":"Unique Document Number",
+    "12.1":"Entity Identifier",
+    "12.2":"Namespace ID",
+    "13":"Parent Document Number",
+    "14":"Placer Order Number",
+    "14.1":"Entity Identifier",
+    "14.2":"Namespace ID",
+    "15":"Filler Order Number",
+    "15.1":"Entity Identifier",
+    "15.2":"Namespace ID",
+    "16":"Unique Document File Name",
+    "17":"Document Completion Status",
+    "18":"Document Confidentiality Status",
+    "19":"Document Availability Status",
+    "20":"Document Storage Status",
+    "21":"Document Change Reason",
+    "22":"Authentication Person, Time Stamp",
+    "23":"Distributed Copies (Code and Name of Recipients)"
+
+  }
+}

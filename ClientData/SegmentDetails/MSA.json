@@ -1,0 +1,11 @@
+﻿{
+  "SegmentType": "MSA",
+  "SegmentLabels": {
+    "1": "Acknowledgment Code",
+    "2": "Message Control ID",
+    "3": "Text Message",
+    "4": "Expected Sequence Number",
+    "5": "Delayed Acknowledgment Type",
+    "6": "Error Condition"
+  }
+}

@@ -1,0 +1,12 @@
+﻿{
+  "SegmentType": "MRG",
+  "SegmentLabels": {
+    "1": "Prior Patient Id - Internal",
+    "2": "Prior Alternate Patient ID",
+    "3": "Prior Patient Account Number",
+    "4": "Prior Patient ID - External",
+    "5": "Prior Visit Number",
+    "6": "Prior Alternate Visit Number",
+    "7": "Prior Patient Name" 
+  }
+}

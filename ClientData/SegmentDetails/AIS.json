@@ -1,0 +1,15 @@
+﻿{
+  "SegmentType": "AIS",
+  "SegmentLabels": {
+    "1": "Set ID - AIS",
+    "2": "Segment Action Code",
+    "3": "Universal Service Identifier",
+    "4": "Start Date/Time",
+    "5": "Start Date/Time Offset",
+    "6": "Start Date/Time Offset Units",
+    "7": "Duration",
+    "8": "Duration Units",
+    "9": "Allow Substitution Code",
+    "10": "Filler Status Code"
+  }
+}

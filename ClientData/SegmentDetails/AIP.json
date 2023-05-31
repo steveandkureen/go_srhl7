@@ -1,0 +1,17 @@
+﻿{
+  "SegmentType": "AIP",
+  "SegmentLabels": {
+    "1":"Set ID – AIP",
+    "2":"Segment Action code",
+    "3":"Personnel Resource ID",
+    "4":"Resource Role",
+    "5":"Resource Group",
+    "6":"Start Date/Time",
+    "7":"Start Date/Time Offset",
+    "8":"Start Date/Time Offset Units",
+    "9":"Duration",
+    "10":"Duration Units",
+    "11":"Allow Substitution Code",
+    "12":"Filler Status Code"
+  }
+}

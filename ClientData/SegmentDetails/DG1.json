@@ -1,0 +1,30 @@
+﻿{
+  "SegmentType": "DG1",
+  "SegmentLabels" : {
+    "1":"Set ID ‑ DG1",
+    "2":"Diagnosis Coding Method",
+    "3":"Diagnosis Code",
+    "3.1":"Identifier",
+    "3.2":"Text",
+    "3.3":"Name of Coding System",
+    "3.4":"Alternate Identifier",
+    "3.5":"Alternate Text",
+    "3.6":"Name of Alternate Coding System",
+    "4":"Diagnosis Description",
+    "5":"Diagnosis Date/Time",
+    "6":"Diagnosis Type",
+    "7":"Major Diagnostic Category",
+    "8":"Diagnostic Related Group",
+    "9":"DRG Approval Indicator",
+    "10":"DRG Grouper Review Code",
+    "11":"Outlier Type",
+    "12":"Outlier Days",
+    "13":"Outlier Cost",
+    "14":"Grouper Version And Type",
+    "15":"Diagnosis Priority",
+    "16":"Diagnosing Clinician",
+    "17":"Diagnosis Classification",
+    "18":"Confidential Indicator",
+    "19":" Attestation Date/Time"
+  }
+}

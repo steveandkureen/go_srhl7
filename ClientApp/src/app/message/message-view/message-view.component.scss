@@ -1,0 +1,52 @@
+h1 {
+  height: 61px;
+}
+
+
+.dialog-button-panel {
+  float: right;
+  margin: 10px;
+}
+
+.segment-container {
+  width: 100%;
+  .detail-container {
+    float: right;
+    width: 50%;
+    overflow-y: auto;
+  }
+}
+
+ul
+{
+  padding: 0;
+  float: left;
+  &.show-whole {
+    width: 100%;
+  }
+
+  &.show-detail {
+    width: 50%;
+  }
+
+  li {
+    list-style-type: none;
+    white-space: nowrap;
+    height: 30px;
+    border: 1px solid black;
+    overflow: hidden;
+    padding-left: 5px;
+    &:hover {
+      background-color: darkgrey;
+    }
+    &.selected {
+      background-color: #0066cc;
+      color: white;
+    }
+  }
+
+}
+
+.detail-container {
+  display: inline-block;
+}

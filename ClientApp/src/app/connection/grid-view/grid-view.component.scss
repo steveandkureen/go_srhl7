@@ -1,0 +1,37 @@
+
+
+.message-row {
+  max-height: 100px;
+
+
+}
+
+.mat-column-dateTime {
+  max-width: 200px;
+}
+
+.mat-cell .mat-column-message {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.mat-cell .mat-column-response {
+  overflow: hidden;
+}
+
+.mat-column-messageStatus {
+  max-width: 75px;
+}
+
+ngx-datatable {
+  height: 500px;
+}
+
+.message-cell {
+  overflow-y: auto;
+}
+
+.button-panel {
+  margin: 10px;
+  float: right;
+}

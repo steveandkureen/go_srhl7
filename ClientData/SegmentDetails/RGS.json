@@ -1,0 +1,8 @@
+﻿{
+  "SegmentType": "RGS",
+  "SegmentLabels": {
+    "1": "Set ID - RGS",
+    "2": " Segment Action Code",
+    "3": "Resource Group Id" 
+  }
+}

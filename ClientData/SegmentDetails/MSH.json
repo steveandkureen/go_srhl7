@@ -1,0 +1,25 @@
+﻿{
+  "SegmentType": "MSH",
+  "SegmentLabels": {
+    "1": "SegmentSeperator",
+    "2": "FieldSeperators",
+    "3": "Sending Application",
+    "4": "Sending Facility",
+    "5": "Receiving Application",
+    "6": "Receiving Facility",
+    "7": "Message Date",
+    "8": "Security",
+    "9": "Message Type",
+    "10": "Message Control ID",
+    "11": "Processing ID",
+    "12": "Version ID",
+    "13": "Sequence Number",
+    "14": "Continuation Pointer",
+    "15": "Accept Acknowledgment Type",
+    "16": "Application Acknowledgment Type",
+    "17": "Country Code",
+    "18": "Character Set",
+    "19": "Principal Language",
+    "20": "Alternate Character"
+  }
+}

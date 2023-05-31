@@ -1,0 +1,14 @@
+﻿{
+  "SegmentType": "MFI",
+  "SegmentLabels": {
+    "1": "Master File Id",
+    "2": "Master File Application Id",
+    "2.1": "Namespace Id",
+    "2.2": "Universal Id",
+    "2.3": "Universal Id Type",
+    "3": "File-Level Event Code",
+    "4": "Entered Date/Time",
+    "5": "Effective Date/Time",
+    "6": "Response Level Code" 
+  }
+}

@@ -1,0 +1,18 @@
+﻿{
+  "SegmentType": "AIL",
+  "SegmentLabels": {
+    "1":"Set ID – AIL",
+    "2":"Segment Action Code",
+    "3":"Location Resource ID",
+    "4":"Location Type-AIL",
+    "5":"Location Group",
+    "6":"Start Date/Time",
+    "7":"Start Date/Time Offset",
+    "8":"Start Date/Time Offset Units",
+    "9":"Duration",
+    "10":"Duration Units",
+    "11":"Allow Substitution Code",
+    "12":"Filler Status Code"
+
+  }
+}

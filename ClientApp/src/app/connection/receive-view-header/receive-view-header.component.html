@@ -1,0 +1,33 @@
+<mat-form-field appearance="fill" >
+  <mat-label>Ip Address</mat-label>
+  <input type="text"
+         placeholder="Pick One"
+         aria-label="Ip Address"
+         matInput
+         [formControl]="ipAddress"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let ip of filteredOptions | async" [value]="ip">
+      {{ip}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Ack Response</mat-label>
+    <mat-select [formControl]="ackType">
+      <mat-option *ngFor="let ack of ackTypes" [value]="ack.value">
+        {{ack.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Sending Port</mat-label>
+  <input matInput placeholder="" type="number" value="{{clientData?.listeningPort}}">
+</mat-form-field>
+<mat-slide-toggle class="slide-control" (change)="connectButtonChagned($event)">Listen</mat-slide-toggle>
+<div class="right-buttons">
+  <button mat-fab color="primary" >
+    <mat-icon aria-hidden="false"  aria-label="Add Message" fontIcon="cloud_download"></mat-icon>
+  </button>
+</div>
+

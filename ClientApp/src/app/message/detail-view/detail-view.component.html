@@ -1,0 +1,18 @@
+<div class="detail-container">
+  <ul *ngIf="segment != null">
+    <li
+      *ngFor="let field of flattenedFields; index as i"
+      [ngClass]="{ subComponent: field.depth != 0 }"
+    >
+      <span class="field-header"
+        >{{ segment.Header }}:{{ field.displayIndex }}</span
+      >
+      <span class="field-detail">{{
+        getSegmentDetail(segment.Header, field.displayIndex)
+      }}</span>
+      <span class="field-value"
+        ><input type="text" value="{{ field.Field.Field }}"
+      /></span>
+    </li>
+  </ul>
+</div>

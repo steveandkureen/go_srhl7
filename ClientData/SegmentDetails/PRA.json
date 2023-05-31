@@ -1,0 +1,22 @@
+﻿{
+  "SegmentType": "PRA",
+  "SegmentLabels": {
+    "1":"Primary Key Value – PRA",
+    "2":"Practitioner Group",
+    "3":"Practitioner Category",
+    "4":"Provider Billing",
+    "5":"Specialty",
+    "5.1":"Specialty Id",
+    "5.2":"Governing Board",
+    "5.3":"Eligible or Certified",
+    "5.4":"Date of Certification",
+    "6":"Practitioner ID Numbers",
+    "6.1":"ID Number",
+    "6.2":"Type of ID Number",
+    "6.3":"State Other Qualifying Info",
+    "6.4":"Expiration Date",
+    "7":"Privileges",
+    "8":"Date Entered Practice"
+
+  }
+}
