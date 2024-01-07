@@ -70,6 +70,7 @@ func (s *SendConnection) CleanData(data string) string {
 
 func (s *SendConnection) runConnection() {
 	var err error
+	s.connected = true
 
 	s.conn, err = net.DialTimeout("tcp", s.IpAddress+":"+s.Port, time.Duration(time.Duration.Seconds(30)))
 	if err != nil {
@@ -77,7 +78,6 @@ func (s *SendConnection) runConnection() {
 		return
 	}
 
-	s.connected = true
 	go s.listenForAck() // start thread to listen for ack and watch for disconnect
 	for {
 		message := <-s.Submit

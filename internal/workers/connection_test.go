@@ -15,11 +15,11 @@ func mockDialTimeout(network, address string, timeout time.Duration) (net.Conn, 
 }
 
 func setupMockDialTimeout() {
-	net.DialTimeout = mockDialTimeout
+	//net.DialTimeout = mockDialTimeout
 }
 
 func teardownMockDialTimeout() {
-	net.DialTimeout = dialTimeoutFunc
+	//net.DialTimeout = dialTimeoutFunc
 }
 
 type Conn interface {
