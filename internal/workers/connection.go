@@ -21,7 +21,7 @@ func ConvertCodeSequence(strCodeSeq string) string {
 	for _, strCode := range codes {
 		if strCode != "" {
 			iCharValue, _ := strconv.Atoi(strCode)
-			strSeq += string(iCharValue)
+			strSeq += string(rune(iCharValue))
 		}
 	}
 	return strSeq
