@@ -12,6 +12,6 @@ export class NavMenuComponent {
   constructor(private router: Router) {}
 
   navigateHome() {
-    this.router.navigate([`/ui`]);
+    this.router.navigate([`/`]);
   }
 }
