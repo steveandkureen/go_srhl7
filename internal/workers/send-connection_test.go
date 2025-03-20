@@ -2,6 +2,7 @@ package worker
 
 import (
 	"testing"
+	"time"
 )
 
 func TestCreateConnection(t *testing.T) {
@@ -29,7 +30,7 @@ func TestCreateConnectionIdBlank(t *testing.T) {
 func TestCreateIpAddressBlank(t *testing.T) {
 	connection, err := CreateSendConnection("connection id", "", "5000")
 	if err == nil {
-		t.Fatalf("Error was not thrown for empty connection id")
+		t.Fatalf("Error was not thrown for empty ipaddress")
 	}
 
 	if connection != nil {
@@ -40,7 +41,7 @@ func TestCreateIpAddressBlank(t *testing.T) {
 func TestCreatePortBlank(t *testing.T) {
 	connection, err := CreateSendConnection("connection id", "127.0.0.1", "")
 	if err == nil {
-		t.Fatalf("Error was not thrown for empty connection id")
+		t.Fatalf("Error was not thrown for empty port")
 	}
 
 	if connection != nil {
@@ -48,33 +49,33 @@ func TestCreatePortBlank(t *testing.T) {
 	}
 }
 
-// func TestConnectionStartStop(t *testing.T) {
-// 	connection, err := CreateSendConnection("connection id", "127.0.0.1", "59868")
-// 	if err != nil {
-// 		t.Fatalf(err.Error())
-// 	}
+func TestConnectionStartStop(t *testing.T) {
+	connection, err := CreateSendConnection("connection id", "127.0.0.1", "59868")
+	if err != nil {
+		t.Fatalf("Error creating connection: " + err.Error())
+	}
 
-// 	connection.Connect()
-// 	time.Sleep(1 * time.Second)
-// 	connection.Disconnect()
-// }
+	connection.Connect()
+	time.Sleep(1 * time.Second)
+	connection.Disconnect()
+}
 
-// func TestConnect(t *testing.T) {
-// 	setupMockDialTimeout()
+func TestConnect(t *testing.T) {
+	setupMockDialTimeout()
 
-// 	connection, err := CreateSendConnection("connection id", "127.0.0.1", "59868")
-// 	if err != nil {
-// 		t.Fatalf(err.Error())
-// 	}
+	connection, err := CreateSendConnection("connection id", "127.0.0.1", "59868")
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
 
-// 	if connection != nil {
-// 		t.Fatalf("Connection should be nil")
-// 	}
+	if connection != nil {
+		t.Fatalf("Connection should be nil")
+	}
 
-// 	connection.Connect()
+	connection.Connect()
 
-// 	if !connection.connected {
-// 		t.Fatalf("Connection is not connected")
-// 	}
+	if !connection.connected {
+		t.Fatalf("Connection is not connected")
+	}
 
-// }
+}

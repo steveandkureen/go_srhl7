@@ -10,16 +10,17 @@ import (
 )
 
 type ListenConnection struct {
-	ConnectionId  string
-	IpAddress     string
-	Port          string
-	BeginSequence string
-	EndSequence   string
-	Submit        chan (model.MessageModel)
-	Response      chan (model.MessageModel)
-	connected     bool
-	conn          *net.Conn
-	listener      *net.Listener
+	ConnectionId   string
+	IpAddress      string
+	Port           string
+	BeginSequence  string
+	EndSequence    string
+	Submit         chan (model.MessageModel)
+	Response       chan (model.MessageModel)
+	connected      bool
+	conn           *net.Conn
+	listener       *net.Listener
+	ConnectedCount int
 }
 
 func CreateListenConnection(connectionId string, ipAddress string, port string) (*ListenConnection, error) {
@@ -44,6 +45,7 @@ func CreateListenConnection(connectionId string, ipAddress string, port string) 
 	c.BeginSequence = "\\011"
 	c.EndSequence = "\\028\\013"
 	c.connected = false
+	c.ConnectedCount = 1
 	return c, nil
 }
 
@@ -54,6 +56,7 @@ func GetListenConnectionId(clientId string) string {
 func (l *ListenConnection) Connect() {
 	l.Submit = make(chan model.MessageModel, 100)
 	l.Response = make(chan model.MessageModel, 100)
+	l.ConnectedCount = 1
 	go l.runConnection()
 
 }
@@ -119,6 +122,7 @@ func (l *ListenConnection) CreateMessageModel(message string) *model.MessageMode
 	messageModel.DateTime = time.Now().Format(time.RFC3339)
 	messageModel.MessageStatus = model.Acked
 	messageModel.Message = message
+	messageModel.ConnectedCount = l.ConnectedCount
 	ack, err := hl7Messages.CreateAck(message, hl7Messages.AA)
 	if err != nil {
 		ack = "ack not created"
@@ -141,6 +145,7 @@ func (l *ListenConnection) IsConnected() bool {
 
 func (l *ListenConnection) Disconnect() {
 	l.connected = false
+	l.ConnectedCount = 0
 	if l.conn != nil {
 		(*l.conn).Close()
 	}
@@ -152,4 +157,18 @@ func (l *ListenConnection) Disconnect() {
 
 func (l *ListenConnection) GetConnectionId() string {
 	return l.ConnectionId
+}
+
+func (l *ListenConnection) GetConnectedCount() int {
+	return l.ConnectedCount
+}
+
+func (l *ListenConnection) AddConnection() int {
+	l.ConnectedCount++
+	return l.ConnectedCount
+}
+
+func (l *ListenConnection) RemoveConnection() int {
+	l.ConnectedCount--
+	return l.ConnectedCount
 }

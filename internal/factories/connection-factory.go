@@ -29,7 +29,7 @@ func (f *ConnectionFactory) GetConnection(conModel model.ConnectionModel) (worke
 		connection, err = worker.CreateListenConnection(conModel.ClientId, conModel.IpAddress, conModel.Port)
 	}
 	if err != nil {
-		return nil, errors.New("Connection failed")
+		return nil, errors.New("connection failed")
 	}
 
 	f.Connections[connection.GetConnectionId()] = &connection
@@ -45,6 +45,7 @@ func (f *ConnectionFactory) GetExistingConnection(conModel model.ConnectionModel
 	}
 	value, exists := f.Connections[connectionId]
 	if exists {
+		(*value).AddConnection()
 		return value
 	}
 	return nil

@@ -4,6 +4,7 @@ export interface TemplateModel {
   body: string;
   name: string;
   description: string;
+  macros: TemplateMacro[];
 }
 
 export interface TemplateMacro {
@@ -81,7 +82,7 @@ export var generateMessages = (
   template: TemplateModel,
   count: number
 ): string[] => {
-  let macros = parseMacros(template.body);
+  let macros = template.macros;
   let messages: string[] = [];
 
   for (let i = 0; i < count; i++) {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TemplateModel } from '../model/template-model';
+import { Observable, tap } from 'rxjs';
+import { TemplateModel, parseMacros } from '../model/template-model';
 import { ClientService } from '../client/client.service';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class TemplateService {
     let clientId = client?.clientId;
     return this.http.get<TemplateModel[]>(
       this.baseUrl + `../api/templates/${clientId}`
-    );
+    ).pipe(tap(r => { r.forEach(t => t.macros = parseMacros(t.body)); }));
   }
 
   loadTemplate(templateId: string): Observable<TemplateModel> {
@@ -27,7 +27,7 @@ export class TemplateService {
     let clientId = client?.clientId;
     return this.http.get<TemplateModel>(
       this.baseUrl + `../api/templates/${clientId}/${templateId}`
-    );
+    ).pipe(tap(r => r.macros = parseMacros(r.body) ));
   }
 
   AddTemplate(template: TemplateModel): Observable<TemplateModel> {

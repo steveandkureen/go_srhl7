@@ -13,6 +13,9 @@ type Connection interface {
 	GetResponseChannel() *chan (model.MessageModel)
 	IsConnected() bool
 	GetConnectionId() string
+	GetConnectedCount() int
+	AddConnection() int
+	RemoveConnection() int
 }
 
 func ConvertCodeSequence(strCodeSeq string) string {

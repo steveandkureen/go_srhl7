@@ -1,0 +1,91 @@
+<h1 mat-dialog-title>Add Template</h1>
+<mat-dialog-content class="add-message-dialog">
+  <div>
+    <mat-form-field class="tempate-name">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="template.name" />
+    </mat-form-field>
+    <mat-form-field class="tempate-description">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="template.description" />
+    </mat-form-field>
+  </div>
+  <div class="template-text">
+    <textarea
+      name="message"
+      matInput
+      (change)="updateMacros()"
+      [(ngModel)]="template.body"
+    ></textarea>
+  </div>
+  <div class="template-data">
+    <ul>
+      <li *ngFor="let macro of template.macros; index as i" [ngClass]="">
+        <mat-label>{{ macro.macro }}</mat-label>
+        <ng-container [ngSwitch]="macro?.macroType">
+          <ng-container *ngSwitchCase="'StringMacro'">
+            <mat-form-field class="macro-string">
+              <mat-label>{{ macro.default }}</mat-label>
+              <input
+                matInput
+                placeholder="{{ macro.default }}"
+                value="{{ macro.value }}"
+              />
+            </mat-form-field>
+          </ng-container>
+          <ng-container *ngSwitchCase="'CounterMacro'">
+            <mat-form-field class="macro-counter">
+              <mat-label>Min</mat-label>
+              <input
+                matInput
+                placeholder="{{ macro.min }}"
+                value="{{ macro.min }}"
+              />
+            </mat-form-field>
+            <mat-form-field class="macro-counter">
+              <mat-label>Max</mat-label>
+              <input
+                matInput
+                placeholder="{{ macro.max }}"
+                value="{{ macro.max }}"
+              />
+            </mat-form-field>
+          </ng-container>
+          <ng-container *ngSwitchCase="'RandomMacro'">
+            <mat-form-field class="macro-random">
+              <mat-label>Max</mat-label>
+              <input
+                matInput
+                placeholder="{{ macro.max }}"
+                value="{{ macro.max }}"
+              />
+            </mat-form-field>
+            <mat-form-field class="macro-random">
+              <mat-label>Min</mat-label>
+              <input
+                matInput
+                placeholder="{{ macro.min }}"
+                value="{{ macro.min }}"
+              />
+            </mat-form-field>
+          </ng-container>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</mat-dialog-content>
+<div class="dialog-options-panel">
+  <mat-form-field class="tempate-count">
+    <mat-label>Count</mat-label>
+    <input matInput placeholder="Count" [(ngModel)]="count" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog-button-panel">
+  <button mat-stroked-button color="primary" mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="{
+      template: template,
+      count: count
+    }">
+    Ok
+  </button>
+</div>

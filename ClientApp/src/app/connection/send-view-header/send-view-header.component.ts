@@ -19,6 +19,7 @@ import { TemplateLibraryComponent } from 'src/app/template/template-library/temp
 import { TemplateAddComponent } from 'src/app/template/template-add/template-add.component';
 import { TemplateService } from 'src/app/template/template.service';
 import { TemplateModel, generateMessages } from 'src/app/model/template-model';
+import { EditTemplateComponent } from 'src/app/template/edit-template/edit-template.component';
 
 @Component({
   selector: 'app-send-view-header',
@@ -197,6 +198,20 @@ export class SendViewHeaderComponent {
 
     dialogRef
       .afterClosed()
+      .subscribe((ret: { template: TemplateModel }) => {
+        this.openTemplateEditDialog(ret.template);
+      });
+  }
+
+  openTemplateEditDialog(template: TemplateModel) {
+    const dialogRef = this.dialog.open(EditTemplateComponent, {
+      data: {},
+      width: '80%',
+      height: '80%',
+    });
+
+    dialogRef
+      .afterClosed()
       .subscribe((ret: { template: TemplateModel; count: number }) => {
         let messages = this.messages.getValue();
         let newMessage = generateMessages(ret.template, ret.count);
@@ -217,7 +232,7 @@ export class SendViewHeaderComponent {
       });
   }
 
-  addTemplateDialog() {
+  addTemplateDialog( ) {
     const dialogRef = this.dialog.open(TemplateAddComponent, {
       data: { template: null, clientId: this.clientData?.clientId },
       width: '80%',

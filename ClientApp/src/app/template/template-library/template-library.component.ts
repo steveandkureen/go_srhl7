@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TemplateModel } from 'src/app/model/template-model';
+import { TemplateModel, parseMacros } from 'src/app/model/template-model';
 import { TemplateService } from '../template.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { TemplateService } from '../template.service';
 export class TemplateLibraryComponent {
   templates: TemplateModel[] = [];
   template: TemplateModel | null = null;
-  count: number = 1;
+
   @Input('clientId') clientId: string = '';
 
   constructor(private templateService: TemplateService) {}
@@ -18,8 +18,11 @@ export class TemplateLibraryComponent {
   ngOnInit(): void {
     this.templateService.loadAllTemplates().subscribe((result) => {
       this.templates = result;
+      this.templates.forEach(t => { t.macros = parseMacros(t.body); })
     });
   }
 
-  editTemplate(selected: TemplateModel) {}
+  editTemplate(selected: TemplateModel) {
+
+  }
 }

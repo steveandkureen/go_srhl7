@@ -10,10 +10,12 @@ mat-dialog-content {
     font-size: larger;
     line-height: 50px;
   }
+
   .template-description {
     font-size: medium;
     margin-left: 20px;
   }
+
   .template-button {
     float: right;
     margin: 5px;
@@ -22,14 +24,7 @@ mat-dialog-content {
 }
 
 .dialog-button-panel {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-}
-
-.dialog-options-panel {
-  margin: 10px;
-  margin-left: 20px;
+  position: absolute;
   bottom: 0;
-  left: 0;
+  right: 0;
 }

@@ -1,0 +1,52 @@
+  .dialog-button-panel {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .template-text {
+    width: 60%;
+    height: 78%;
+    float: left;
+
+    textarea {
+      width: 100%;
+      height: 350px;
+    }
+  }
+
+  .tempate-description {
+    margin-left: 10px;
+    width: 200px;
+  }
+
+  .template-data {
+    width: 40%;
+    height: 78%;
+    float: right;
+
+    li {
+      list-style-type: none;
+      clear: both;
+      line-height: 80px;
+    }
+  }
+
+  .macro-counter,
+  .macro-random {
+    float: right;
+    width: 25%;
+    margin: 10px;
+  }
+
+  .macro-string {
+    float: right;
+    margin: 10px;
+  }
+
+  .dialog-options-panel {
+    margin: 10px;
+    margin-left: 20px;
+    bottom: 0;
+    left: 0;
+  }

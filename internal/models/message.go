@@ -8,13 +8,14 @@ type MessageModel struct {
 	Message          string `json:"message"`
 	Response         string `json:"response"`
 	ConnectionStatus bool   `json:"connectionStatus"`
+	ConnectedCount   int    `json:"connectedCount"`
 }
 
 const (
 	InQueue  string = "InQueue"
-	Sending         = "Sending"
-	Sent            = "Sent"
-	Acked           = "Acked"
-	NoAck           = "NoAck"
-	Received        = "Received"
+	Sending  string = "Sending"
+	Sent     string = "Sent"
+	Acked    string = "Acked"
+	NoAck    string = "NoAck"
+	Received string = "Received"
 )

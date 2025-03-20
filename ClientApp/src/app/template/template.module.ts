@@ -9,9 +9,10 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditTemplateComponent } from './edit-template/edit-template.component';
 
 @NgModule({
-  declarations: [TemplateAddComponent, TemplateLibraryComponent],
+  declarations: [TemplateAddComponent, TemplateLibraryComponent, EditTemplateComponent],
   imports: [
     CommonModule,
     MatListModule,

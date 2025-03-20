@@ -9,16 +9,17 @@ import (
 )
 
 type SendConnection struct {
-	ConnectionId  string
-	IpAddress     string
-	Port          string
-	BeginSequence string
-	EndSequence   string
-	Submit        chan (model.MessageModel)
-	ack           chan (string)
-	Response      chan (model.MessageModel)
-	connected     bool
-	conn          net.Conn
+	ConnectionId   string
+	IpAddress      string
+	Port           string
+	BeginSequence  string
+	EndSequence    string
+	Submit         chan (model.MessageModel)
+	ack            chan (string)
+	Response       chan (model.MessageModel)
+	connected      bool
+	conn           net.Conn
+	ConnectedCount int
 }
 
 func CreateSendConnection(connectionId string, ipAddress string, port string) (*SendConnection, error) {
@@ -44,6 +45,7 @@ func CreateSendConnection(connectionId string, ipAddress string, port string) (*
 	c.BeginSequence = "\\011"
 	c.EndSequence = "\\028\\013"
 	c.connected = false
+	c.ConnectedCount = 1
 	return c, nil
 }
 
@@ -55,6 +57,7 @@ func (s *SendConnection) Connect() {
 	s.Submit = make(chan model.MessageModel, 100)
 	s.Response = make(chan model.MessageModel, 100)
 	s.ack = make(chan string)
+	s.ConnectedCount = 1
 	go s.runConnection()
 
 }
@@ -81,7 +84,7 @@ func (s *SendConnection) runConnection() {
 	go s.listenForAck() // start thread to listen for ack and watch for disconnect
 	for {
 		message := <-s.Submit
-		if s.connected == false {
+		if !s.connected {
 			break
 		}
 		message.DateTime = time.Now().Format(time.RFC3339)
@@ -96,9 +99,9 @@ func (s *SendConnection) runConnection() {
 		message.Response = <-s.ack
 		message.MessageStatus = model.Acked
 		message.ConnectionStatus = s.connected
-
+		message.ConnectedCount = s.ConnectedCount
 		s.Response <- message
-		if s.connected != true {
+		if !s.connected {
 			break
 		}
 	}
@@ -141,12 +144,13 @@ func (s *SendConnection) IsConnected() bool {
 }
 
 func (s *SendConnection) Disconnect() {
-	if s.connected == false {
+	if !s.connected {
 		return
 	}
 
 	res := model.MessageModel{}
 	res.ConnectionStatus = false
+	s.ConnectedCount = 0
 	s.connected = false
 	s.Response <- res // send disconnect message to client
 	s.conn.Close()
@@ -158,4 +162,30 @@ func (s *SendConnection) Disconnect() {
 
 func (s *SendConnection) GetConnectionId() string {
 	return s.ConnectionId
+}
+
+func (s *SendConnection) GetConnectedCount() int {
+	return s.ConnectedCount
+}
+
+func (s *SendConnection) AddConnection() int {
+	s.ConnectedCount++
+	s.SendConnectionStatus()
+	return s.ConnectedCount
+}
+
+func (s *SendConnection) RemoveConnection() int {
+	s.ConnectedCount--
+	s.SendConnectionStatus()
+	return s.ConnectedCount
+}
+
+func (s *SendConnection) SendConnectionStatus() {
+	message := model.MessageModel{}
+	message.DateTime = time.Now().Format(time.RFC3339)
+	message.Response = ""
+	message.MessageStatus = model.Acked
+	message.ConnectionStatus = s.connected
+	message.ConnectedCount = s.ConnectedCount
+	s.Response <- message
 }

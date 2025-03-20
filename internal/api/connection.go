@@ -64,6 +64,7 @@ func SeverSideEvent(c *gin.Context) {
 	})
 	if gone {
 		// do something after client is gone
+		conn.RemoveConnection()
 		log.Println("client is gone")
 	}
 }

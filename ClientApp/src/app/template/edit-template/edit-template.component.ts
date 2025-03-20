@@ -1,25 +1,17 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
-import {
-  TemplateMacro,
-  TemplateModel,
-  parseMacro,
-  MacroType,
-  parseMacros,
-} from 'src/app/model/template-model';
+import { TemplateMacro, TemplateModel, parseMacros } from 'src/app/model/template-model';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'app-template-add',
-  templateUrl: './template-add.component.html',
-  styleUrls: ['./template-add.component.scss'],
+  selector: 'app-edit-template',
+  templateUrl: './edit-template.component.html',
+  styleUrls: ['./edit-template.component.scss']
 })
-export class TemplateAddComponent {
+export class EditTemplateComponent {
   template: TemplateModel;
-  macros: BehaviorSubject<TemplateMacro[]> = new BehaviorSubject<
-    TemplateMacro[]
-  >([]);
+  count: number = 1;
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -43,6 +35,8 @@ export class TemplateAddComponent {
 
   updateMacros() {
     if (!this.template?.body) return;
-    this.macros.next(parseMacros(this.template.body));
+    this.template.macros = parseMacros(this.template.body);
   }
 }
+
+
