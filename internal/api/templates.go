@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 )
@@ -47,16 +48,21 @@ func getTemplate(c *gin.Context) {
 
 }
 
-func readTemplateData() ([]model.Template, error) {
+func readTemplateData(filePaths ...string) ([]model.Template, error) {
+	filePath := "./ClientData/templateData.json"
+	if len(filePaths) > 0 {
+		filePath = filePaths[0]
+	}
+
 	rwMutex.RLock()
 	defer rwMutex.RUnlock()
 
-	_, err := os.Stat("./ClientData/templateData.json")
+	_, err := os.Stat(filePath)
 	if os.IsNotExist(err) {
 		fmt.Println("unable to read file: ", err)
 		return []model.Template{}, err
 	}
-	data, err := ioutil.ReadFile("./ClientData/templateData.json")
+	data, err := os.ReadFile(filePath)
 	if err != nil {
 
 	}

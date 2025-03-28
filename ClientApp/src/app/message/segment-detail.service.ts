@@ -9,10 +9,13 @@ import { subscribe } from 'diagnostics_channel';
 })
 export class SegmentDetailService {
   private SegmentDictionary: ISegmentDetails[] = [];
+  apiBaseUrl: string;
   constructor(
     @Inject('BASE_URL') private baseUrl: string,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+  ) {
+    this.apiBaseUrl = this.baseUrl + '../api/';
+  }
 
   getSegmentDetails(segmentNames: string[]): Observable<ISegmentDetails> {
     return new Observable<ISegmentDetails>((subscriber) => {
@@ -28,7 +31,7 @@ export class SegmentDetailService {
       if (need.length > 0) {
         need.forEach((name) => {
           this.http
-            .get<ISegmentDetails>(this.baseUrl + `api/segmentdetials/${name}`)
+            .get<ISegmentDetails>(this.apiBaseUrl + `segmentdetials/${name}`)
             .subscribe((result) => {
               if (result) {
                 this.SegmentDictionary.push(result);
